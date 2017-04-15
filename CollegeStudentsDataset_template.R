@@ -24,8 +24,12 @@ PartitionWrong <- function(dataSet, fractionOfTest = 0.3)
 
 PartitionExact <- function(dataSet, fractionOfTest = 0.3)
 {
-  # ********** Add code here
-  #return(dataSetSplit)
+  samplesize <- floor(fractionOfTest * nrow(dataSet))
+  testIDs <- sample(seq_len(nrow(dataSet)), size = samplesize)
+  testingData <- dataSet[testIDs, ]
+  trainingData <- dataSet[-testIDs, ]
+  dataSetSplit <- list(trainingData=trainingData, testingData=testingData)
+  return(dataSetSplit)
 }
 
 PartitionFast <- function(dataSet, fractionOfTest = 0.3)

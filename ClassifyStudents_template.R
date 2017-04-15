@@ -14,7 +14,7 @@ set.seed(4)
 # Partition data between training and testing sets
 
 # Replace the following line with a function that partitions the data correctly
-StudentsSplit <- PartitionFast(Students, fractionOfTest=0.4) # ********** Change here
+StudentsSplit <- PartitionExact(Students, fractionOfTest=0.4) # ********** Change here
 TestStudents <- StudentsSplit$testingData
 TrainStudents <-StudentsSplit$trainingData
 
@@ -53,7 +53,7 @@ predictedOutcomes.NB <- predict(nbModel, newdata = TestStudents, type = "raw")
 # Confusion Matrices
 
 actual <- ifelse(TestStudents$CollegePlans, "Attend", "NotAttend")
-threshold <- 0.5
+threshold <- 0.7
 
 #Confusion Matrix for Logistic Regression
 # convert the predicted probabilities to predictions using a threshold
@@ -102,19 +102,19 @@ print(table(NBpredictedOutcomes, actual, dnn = c("PredictedNB", "Outcome")))
 # "Confusion Matrix for Logistic Regression"
 #            Actual
 # Predicted   Attend NotAttend
-# Attend      *****    *****   add results here
-# NotAttend   *****    *****   add results here 
+# Attend      682    212   add results here
+# NotAttend   280    1706   add results here 
 # Accuracy defined as fraction of predictions that are correct
-# Accuracy:   **************   add results here
+# Accuracy:    (682+1706)/(682+212+280+1706) = 0.8292  add results here
 #
 # --------------------------------
 # "Confusion Matrix Naive Bayes"
 #            Actual
 # Predicted   Attend NotAttend
-# Attend      *****    *****   add results here
-# NotAttend   *****    *****   add results here
+# Attend      543    206   add results here
+# NotAttend   419    1712   add results here
 # Accuracy defined as fraction of predictions that are correct
-# Accuracy:   **************   add results here
+# Accuracy:   (543+1712)/(543+206+419+1712) = 0.7830   add results here
 
 # Fast Partition; threshold = 0.5
 #
@@ -142,18 +142,18 @@ print(table(NBpredictedOutcomes, actual, dnn = c("PredictedNB", "Outcome")))
 # "Confusion Matrix for Logistic Regression"
 #            Actual
 # Predicted   Attend NotAttend
-# Attend      *****    *****   add results here
-# NotAttend   *****    *****   add results here
+# Attend      464    75   add results here
+# NotAttend   514    1827   add results here
 # Accuracy defined as fraction of predictions that are correct
-# Accuracy:   **************   add results here
+# Accuracy:   (464+1827)/(464+75+514+1827) = 0.7955   add results here
 #
 # --------------------------------
 # "Confusion Matrix Naive Bayes"
 #            Actual
 # Predicted   Attend NotAttend
-# Attend      *****    *****   add results here
-# NotAttend   *****    *****   add results here
+# Attend      401    88   add results here
+# NotAttend   577    1814   add results here
 # Accuracy defined as fraction of predictions that are correct
-# Accuracy:   **************   add results here
+# Accuracy:   (401+1814)/(401+88+577+1814) = 0.7691   add results here
 
 ###################################################
