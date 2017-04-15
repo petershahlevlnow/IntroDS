@@ -45,9 +45,9 @@ if (!require("e1071")) {install.packages("e1071", dep=TRUE, repos=reposURL)} els
 library(e1071)
 
 # Create Naive Bayes model
-# ********** add code here
+nbModel <- naiveBayes(formula = formula, data = TrainStudents)
 # Predict the outcomes for the test data. (predict type="raw")
-# ********** add code here
+predictedOutcomes.NB <- predict(nbModel, newdata = TestStudents, type = "raw")
 ###################################################
 
 # Confusion Matrices
@@ -66,12 +66,12 @@ print(table(predictedOutcomes, actual, dnn = c("Predicted", "Outcome")))
 
 #Confusion Matrix for Naive Bayes
 # convert the predicted probabilities to predictions using a threshold
-# ********** add code here
+NBpredictedOutcomes <- ifelse(predictedOutcomes.NB[,2] > threshold, "Attend", "NotAttend")
 print(" ")
 print(" -------------------------------- ")
 print("Confusion Matrix Naive Bayes")
 # create a table to compare predicted values to actual values
-# ********** add code here
+print(table(NBpredictedOutcomes, actual, dnn = c("PredictedNB", "Outcome")))
 ###################################################
 
 # Bad Partition; threshold = 0.5
@@ -122,19 +122,19 @@ print("Confusion Matrix Naive Bayes")
 # "Confusion Matrix for Logistic Regression"
 #            Actual
 # Predicted   Attend NotAttend
-# Attend      *****    *****   add results here
-# NotAttend   *****    *****   add results here
+# Attend      657    243   add results here
+# NotAttend   258    1697   add results here
 # Accuracy defined as fraction of predictions that are correct
-# Accuracy:   **************   add results here
+# Accuracy:   (657 + 1697)/(657 + 243 + 258 + 1697) = 0.8245  add results here
 #
 # --------------------------------
 # "Confusion Matrix Naive Bayes"
 #            Actual
 # Predicted   Attend NotAttend
-# Attend      *****    *****   add results here
-# NotAttend   *****    *****   add results here
+# Attend      550    221   add results here
+# NotAttend   365    1719   add results here
 # Accuracy defined as fraction of predictions that are correct
-# Accuracy:   **************   add results here
+# Accuracy:   (550+1719)/(550+221+365+1719) = 0.7948   add results here
 
 # Exact Partition;  threshold = 0.7
 #
