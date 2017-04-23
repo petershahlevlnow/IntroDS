@@ -1,5 +1,5 @@
 # Elbow.R
-# Copyright © 2017 by Ernst Henle.  All rights reserved.
+# Copyright ? 2017 by Ernst Henle.  All rights reserved.
 # This exercise requires the following data file:  SudentPlans.csv
 # If SudentPlans.csv doesn't download from the web into R,
 # then download the file manually 
@@ -19,7 +19,7 @@
 # 8.) Why would clusters separate primarily on Parent Income?
 
 rm(list=ls()) # Clear objects from Memory
-cat("\014") # Clear Console
+#cat("\014") # Clear Console
 
 # Load the data
 # url <- "StudentPlans.csv"
@@ -46,11 +46,11 @@ ParentIncomeMean <- mean(DATAFRAME$ParentIncome)
 # To prevent normalization of ParentIncome, comment-out the following line of code
 DATAFRAME$ParentIncome <- (DATAFRAME$ParentIncome - ParentIncomeMean)/ParentIncomeSD
 
-# Z-score normalize IQ column
-IQSD <- sd(DATAFRAME$IQ)
-IQMean <- mean(DATAFRAME$IQ)
-# To prevent normalization of IQ, comment-out the following line of code
-DATAFRAME$IQ <- (DATAFRAME$IQ - IQMean)/IQSD
+# # Z-score normalize IQ column
+# IQSD <- sd(DATAFRAME$IQ)
+# IQMean <- mean(DATAFRAME$IQ)
+# # To prevent normalization of IQ, comment-out the following line of code
+# DATAFRAME$IQ <- (DATAFRAME$IQ - IQMean)/IQSD
 
 # Look at the Data
 head(DATAFRAME)

@@ -1,0 +1,49 @@
+Pranav "Peter" Shah
+
+1a. The model is built off of the training data so it captures more of the random variation in the data than in the test data. This is overfitting - when the model captures too much of the noise in the data making it accurate on itself but inaccurate on new data. 
+
+b. A random selection of observations are sampled from the dataset based on a fractional size of the total dataset. The random sample is used for training and the other observations are used in testing
+
+c. I don't really understand what is meant by algorithm parameters vs. the model. Assuming you appended predicted outcomes to the test dataset you could look for that column in the test dataset. If you have the model object, it should have information on the data object used to create it. You could compare lengths or equivalency of the two unknown datasets with the data object in the model.
+
+2. 
+predicted |   actual
+              Healthy   Ill
+Healthy(-)    85        3  
+Ill (+)       5         7  
+
+a. Sensitivity = TP/(TP+FN) = 7/(7+3) =.7
+b  Specificity = TN/(TN+FP) = 85/(85+5) = .9444
+c. Accuracy = (TP +TN)/(TP+TN+FN+TP) = (85+7)/(85+7+3+5) = .92
+d. Recall = Sensitivity = TP/(TP+FN) = 7/(7+3) =.7
+e. Precision = TP/(TP+FP) = 7/(7+5) = .5833
+
+3.
+a. A threshold of 0 is where TPR and FPR are 1
+b. A threshold of 1 is where TPR and FPR are 0
+c. A threshold of 0.5 shows the TPR and FPR for a given test dataset, but the point is not the same in all ROC curves.
+
+4. 
+FPR = 0.4 = FP/(FP+TN)  
+TPR = 0.8 = TP/(TP+FN) 
+ACC = 0.7 = (TP+TN)/(TP+TN+FN+FP)
+
+total = TP+FP+TN+FP = 1000
+TP+TN = 700 (from ACC) 
+FN + FP = 300 (total - TP+TN)
+
+TP = 700-TN, plug into TPR
+FP = 300-FN, plug into FPR
+
+Solving using system of equations. 
+
+a. 
+predicted |   actual
+            +               -
++           TP = 400        FP = 200  
+-           FN = 100        TN = 300  
+
+b. 
+You don't really know what the probability threshold is.
+
+5. 
